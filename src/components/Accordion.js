@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Accordion = ({sendProps}) =>{
- 
+ const [activeIndex, setActiveIndex] = useState(null);
     const onTitleClick = (index) => {
 
-        console.log("Title Clicked", index)
+        setActiveIndex(index);
     }
 
     const renderItems = sendProps.map((item,index)=>{
@@ -28,7 +28,10 @@ const Accordion = ({sendProps}) =>{
     });
 
     return (
-        <div className='ui styled accordion'>{renderItems}</div>
+        <div className='ui styled accordion'>
+            {renderItems}
+            <h1>{activeIndex}</h1>
+        </div>
     )
 };
 
