@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useState} from 'react';
 
 const Accordion = ({sendProps}) =>{
- const [activeIndex, setActiveIndex] = useState(null);
+
+ const [activeIndex, setActiveIndex] = useState(null); //activeIndex saves stateful value, setActiveindex saves the function
+
     const onTitleClick = (index) => {
 
         setActiveIndex(index);
@@ -9,18 +12,19 @@ const Accordion = ({sendProps}) =>{
 
     const renderItems = sendProps.map((item,index)=>{
 
+        const active = activeIndex === index ? "active" : " "; 
         return (
         
         <React.Fragment key= {item.title}>
             
             {/* to display the question */}
-            <div className='title active' onClick={()=> onTitleClick(index)}>
+            <div className={`title ${active}`} onClick={()=> onTitleClick(index)}>
                 <i className='dropdown icon'></i>
                 {item.title}
             </div>
 
             {/* to display the answer */}
-            <div className='content active'>
+            <div className={`content ${active}`}>
                 <p> {item.content}</p>
             </div>
         </React.Fragment>
@@ -30,7 +34,6 @@ const Accordion = ({sendProps}) =>{
     return (
         <div className='ui styled accordion'>
             {renderItems}
-            <h1>{activeIndex}</h1>
         </div>
     )
 };
