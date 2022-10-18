@@ -1,5 +1,6 @@
 import React from 'react';
 import Accordion from './components/Accordion';
+import Search from './components/Search';
 
 export default() => {
 
@@ -20,7 +21,7 @@ export default() => {
     return(
         
         <div>
-            <Accordion sendProps = {items} />
+            <Search />
         </div>
         
     )
